@@ -16,7 +16,7 @@ target_link_libraries(ProjectSFML PRIVATE
 	${SFML_DIR}/lib/libsfml-network.a
 	${SFML_DIR}/lib/libsfml-system.a
 	${SFML_DIR}/lib/libsfml-window.a)
-target_include_directories(ProjectSFML PRIVATE "${SFML_DIR}/include")
+target_include_directories(ProjectSFML PRIVATE "${SFML_DIR}/include" "${CMAKE_SOURCE_DIR}/include")
 include(GNUInstallDirs)
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/bin")
