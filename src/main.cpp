@@ -1,8 +1,8 @@
 #include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
-#include <iostream>
 #include <vector>
 #include <string>
+#include <AnimatedSprite.h>
 
 int main() {
     // create the window
@@ -47,8 +47,21 @@ int main() {
     wall.setScale(0.3, 0.3);
     wall.setTextureRect(sf::IntRect(0, 0, 500, 500));
 
+    AnimatedSprite hero("character.png");
+    //hero.setScale(2., 2.);
+    hero.setScale(-2., 2.);
+    //hero.addAnimationFrame(sf::IntRect(  0, 0, 37, 37)); // 1 frame of animation
+    //hero.addAnimationFrame(sf::IntRect( 50, 0, 37, 37)); // 1 frame of animation
+    //hero.addAnimationFrame(sf::IntRect(100, 0, 37, 37)); // 1 frame of animation
+    hero.addAnimationFrame(sf::IntRect(150, 0, 37, 37)); // 1 frame of animation
+    hero.addAnimationFrame(sf::IntRect(200, 0, 37, 37)); // 1 frame of animation
+    hero.addAnimationFrame(sf::IntRect(250, 0, 37, 37)); // 2 frame
+    hero.addAnimationFrame(sf::IntRect(300, 0, 37, 37)); // 3 frame
+    hero.addAnimationFrame(sf::IntRect(350, 0, 37, 37)); // 4 frame
+    hero.setPosition(400, 400);
+
     std::vector<const sf::Drawable*> shapes = {
-        &circle, &rectangle, &triangle, &guy, &grass, &wall
+        &circle, &rectangle, &triangle, &guy, &grass, &wall, &hero
     };
 
     // run the program as long as the window is open
@@ -63,6 +76,11 @@ int main() {
             if (event.type == sf::Event::Closed)
                 window.close();
         }
+
+        //
+        hero.step(elapsed);
+        //hero.move(30*elapsed.asSeconds(), 0);
+        hero.move(-30*elapsed.asSeconds(), 0);
 
         // clear the window with black color
         window.clear(sf::Color::Black);
