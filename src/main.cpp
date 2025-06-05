@@ -26,8 +26,29 @@ int main() {
     triangle.setOutlineThickness(5);
     triangle.setPosition(600.0, 100.0);
 
+    sf::Texture texture_grass;
+    if (!texture_grass.loadFromFile("grass.png")) return 1;
+    sf::Sprite grass;
+    grass.setTexture(texture_grass);
+
+    sf::Texture texture_guy;
+    if(!texture_guy.loadFromFile("guy.png")) return 1;
+    sf::Sprite guy;
+    guy.setTexture(texture_guy);
+    guy.setScale(2., 2.);
+    guy.setTextureRect(sf::IntRect(0, 0, 120, 120)); //left, top, width, height
+    guy.setPosition(400, 300);
+
+    sf::Texture texture_wall;
+    if(!texture_wall.loadFromFile("wall.png")) return 1;
+    texture_wall.setRepeated(true);
+    sf::Sprite wall;
+    wall.setTexture(texture_wall);
+    wall.setScale(0.3, 0.3);
+    wall.setTextureRect(sf::IntRect(0, 0, 500, 500));
+
     std::vector<const sf::Drawable*> shapes = {
-        &circle, &rectangle, &triangle
+        &circle, &rectangle, &triangle, &guy, &grass, &wall
     };
 
     // run the program as long as the window is open
