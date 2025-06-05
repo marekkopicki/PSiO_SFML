@@ -13,8 +13,21 @@ int main() {
     circle.setPosition(100.0, 300.0);
     circle.setFillColor(sf::Color(100, 250, 50));
 
+    sf::RectangleShape rectangle(sf::Vector2f(120.0, 60.0));
+    rectangle.setPosition(500.0, 400.0);
+    rectangle.setFillColor(sf::Color(100, 50, 250));
+
+    sf::ConvexShape triangle;
+    triangle.setPointCount(3);
+    triangle.setPoint(0, sf::Vector2f(0.0, 0.0));
+    triangle.setPoint(1, sf::Vector2f(0.0, 100.0));
+    triangle.setPoint(2, sf::Vector2f(140.0, 40.0));
+    triangle.setOutlineColor(sf::Color::Red);
+    triangle.setOutlineThickness(5);
+    triangle.setPosition(600.0, 100.0);
+
     std::vector<const sf::Drawable*> shapes = {
-        &circle
+        &circle, &rectangle, &triangle
     };
 
     // run the program as long as the window is open
